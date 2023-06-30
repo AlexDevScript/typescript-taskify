@@ -88,8 +88,8 @@ const useTaskCRUD = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Si, ¡Eliminar!",
-    }).then((willDelete) => {
-      if (willDelete) {
+    }).then((result) => {
+      if (result.isConfirmed) {
         const removeTask = tasks.filter((task) => task.id !== id);
         setTasks(removeTask);
 

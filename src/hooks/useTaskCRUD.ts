@@ -88,21 +88,23 @@ const useTaskCRUD = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Si, ¡Eliminar!",
-    }).then(() => {
-      const removeTask = tasks.filter((task) => task.id !== id);
-      setTasks(removeTask);
+    }).then((willDelete) => {
+      if (willDelete) {
+        const removeTask = tasks.filter((task) => task.id !== id);
+        setTasks(removeTask);
 
-      const removeTaskCompleted = tasksCompleted.filter(
-        (task) => task.id !== id
-      );
-      setTasksCompleted(removeTaskCompleted);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Tarea Eliminada 🙂",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+        const removeTaskCompleted = tasksCompleted.filter(
+          (task) => task.id !== id
+        );
+        setTasksCompleted(removeTaskCompleted);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Tarea Eliminada 🙂",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     });
   };
 

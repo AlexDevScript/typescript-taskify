@@ -7,17 +7,9 @@ interface Props {
   editTask(task: ITask): void;
   handleError: (error: boolean) => void;
   disabled: boolean;
-  btnCancel: () => void;
 }
 
-const Header = ({
-  addTask,
-  edit,
-  editTask,
-  handleError,
-  disabled,
-  btnCancel,
-}: Props) => {
+const Header = ({ addTask, edit, editTask, handleError, disabled }: Props) => {
   return (
     <header className="h-90 mb-3 bg-primary flex flex-col justify-evenly py-4">
       <h1 className="w-11/12 m-auto pb-2 text-3xl text-center text-white border-b-2">
@@ -29,7 +21,6 @@ const Header = ({
         editTask={editTask}
         handleError={handleError}
         disabled={disabled}
-        btnCancel={btnCancel}
       />
       <small className="text-center text-white pb-2">
         La tarea no puede contener más de 50 caracteres.

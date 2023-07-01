@@ -46,27 +46,25 @@ const useTaskCRUD = () => {
   };
 
   const getEditTask = (task: ITask) => {
-    console.log(task);
     setEdit(task);
     setDisabled(true);
   };
 
-  const btnCancel = () => {
-    setDisabled(false);
-    setEdit(initialForm);
-  };
-
   const editTask = (form: ITask): void => {
+    setEdit(initialForm);
+    setDisabled(false);
+
+    if (!form.id) return;
+
     const newTasks = tasks.map((task) => {
       return task.id === form.id ? form : task;
     });
 
     const isEdited = tasks.some((task) => {
-      return task.name === form.name && task.priority === form.priority;
+      return task === form;
     });
 
     if (!isEdited) {
-      btnCancel();
       Swal.fire({
         position: "center",
         icon: "success",
@@ -76,7 +74,6 @@ const useTaskCRUD = () => {
       });
     }
     setTasks(newTasks);
-    btnCancel();
   };
 
   const deleteTask = (id: string): void => {
@@ -152,7 +149,6 @@ const useTaskCRUD = () => {
     deleteTask,
     handleCompleted,
     handleError,
-    btnCancel,
   };
 };
 

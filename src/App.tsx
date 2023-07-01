@@ -16,7 +16,6 @@ function App() {
     deleteTask,
     handleCompleted,
     handleError,
-    btnCancel,
   } = useTaskCRUD();
 
   return (
@@ -27,7 +26,6 @@ function App() {
         editTask={editTask}
         handleError={handleError}
         disabled={disabled}
-        btnCancel={btnCancel}
       />
 
       {errorForm && <Error error={handleError} message="Completa los campos" />}

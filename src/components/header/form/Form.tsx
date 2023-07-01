@@ -14,17 +14,9 @@ interface Props {
   editTask(task: ITask): void;
   handleError: (error: boolean) => void;
   disabled: boolean;
-  btnCancel: () => void;
 }
 
-const Form = ({
-  addTask,
-  edit,
-  editTask,
-  handleError,
-  disabled,
-  btnCancel,
-}: Props) => {
+const Form = ({ addTask, edit, editTask, handleError, disabled }: Props) => {
   const [form, setForm] = useState<ITask>(initialForm);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -62,7 +54,8 @@ const Form = ({
   };
 
   const handleCancel = () => {
-    btnCancel();
+    setForm(initialForm);
+    editTask(initialForm);
   };
 
   return (
@@ -106,14 +99,12 @@ const Form = ({
             {nameButton}
           </button>
 
-          {disabled && (
-            <button
-              type="button"
-              onClick={handleCancel}
-              className="w-40 bg-slate-400 text-black font-semibold tracking-wide rounded border-2 border-b-red-400 border-x-red-300 py-2 active:scale-90 ease-out duration-100 ring-white active:ring-2">
-              Cancelar
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={handleCancel}
+            className="w-40 bg-slate-400 text-black font-semibold tracking-wide rounded border-2 border-b-red-400 border-x-red-300 py-2 active:scale-90 ease-out duration-100 ring-white active:ring-2">
+            Cancelar
+          </button>
         </div>
       </form>
     </>

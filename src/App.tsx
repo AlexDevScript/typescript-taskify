@@ -9,7 +9,6 @@ function App() {
     tasksCompleted,
     edit,
     errorForm,
-    disabled,
     addTask,
     getEditTask,
     editTask,
@@ -25,7 +24,6 @@ function App() {
         edit={edit}
         editTask={editTask}
         handleError={handleError}
-        disabled={disabled}
       />
 
       {errorForm && <Error error={handleError} message="Completa los campos" />}
@@ -36,7 +34,6 @@ function App() {
         handleCompleted={handleCompleted}
         deleteTask={deleteTask}
         tasksCompleted={tasksCompleted}
-        disabled={disabled}
       />
     </div>
   );

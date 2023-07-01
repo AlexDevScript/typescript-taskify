@@ -17,7 +17,6 @@ const useTaskCRUD = () => {
 
   const [edit, setEdit] = useState<ITask>(initialForm);
   const [errorForm, setErrorForm] = useState<boolean>(false);
-  const [disabled, setDisabled] = useState<boolean>(false);
 
   useEffect(() => {
     localStorage.setItem("Tasks", JSON.stringify(tasks));
@@ -47,12 +46,10 @@ const useTaskCRUD = () => {
 
   const getEditTask = (task: ITask) => {
     setEdit(task);
-    setDisabled(true);
   };
 
   const editTask = (form: ITask): void => {
     setEdit(initialForm);
-    setDisabled(false);
 
     if (!form.id) return;
 
@@ -142,7 +139,6 @@ const useTaskCRUD = () => {
     tasksCompleted,
     edit,
     errorForm,
-    disabled,
     addTask,
     getEditTask,
     editTask,

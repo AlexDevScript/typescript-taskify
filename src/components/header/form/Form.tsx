@@ -13,10 +13,9 @@ interface Props {
   edit: ITask;
   editTask(task: ITask): void;
   handleError: (error: boolean) => void;
-  disabled: boolean;
 }
 
-const Form = ({ addTask, edit, editTask, handleError, disabled }: Props) => {
+const Form = ({ addTask, edit, editTask, handleError }: Props) => {
   const [form, setForm] = useState<ITask>(initialForm);
   const inputRef = useRef<HTMLInputElement>(null);
 
